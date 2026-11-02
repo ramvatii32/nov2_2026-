@@ -17,6 +17,14 @@ jobs:
        - name: mystep3-check the source code
          run: ls -al
        - name: mystep4-build docker image
-         run:  docker image build -t ramvatii32/myimage_nov2:t1 -f Dockerfile . 
+         run:  docker image build -t ramvatii32/myimage_nov2:t${{ github.run_number }} -f Dockerfile . 
        - name: mystep5-check the docker images
          run: docker images
+       - name: mystep6-login to dockerhub
+         uses: docker/login-actions@v3
+         with:
+           username: ${{ secrets.DOCKERHUB_USERNAME }}
+           password: ${{ secrets.DOCKERHUB_TOKENS }}
+       - name: mystep7-push the docker image
+         run: docker image push ramvatii32/myimage_nov2t${{ github.run_number }}
+
