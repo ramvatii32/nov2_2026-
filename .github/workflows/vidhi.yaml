@@ -18,4 +18,5 @@ jobs:
          run: ls -al
        - name: mystep4-build docker image
          run:  docker image build -t ramvatii32/myimage_nov2:t1 -f Dockerfile . 
-       
+       - name: mystep5-check the docker images
+         run: docker images
