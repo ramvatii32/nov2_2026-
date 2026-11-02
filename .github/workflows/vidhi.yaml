@@ -9,4 +9,6 @@ jobs:
     steps:
        - name:mystep1
          run: |
-              cat /etc/os-release  
+              cat /etc/os-release
+       - name: mystep2-clone the repo in the current directory
+         uses: actions/checkout@v4       
